@@ -1,0 +1,19 @@
+{
+    "name": "John Smith",
+    "email": "john@smith.com",
+    "password": "John@2000",
+    "birthdate": "2000-04-11",
+    "number_of_kids": "1",
+    "gender": "m",
+    "nationality": [
+        "lb",
+        "us"
+    ],
+    "message": "Bonjour! C'est un message de test.",
+    "position": "supervisor",
+    "skills": [
+        "word",
+        "excel"
+    ],
+    "submission_date": "2024-04-08 19:36:56"
+}
