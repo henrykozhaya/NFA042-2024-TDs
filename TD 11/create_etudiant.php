@@ -31,8 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Préparation de la requête SQL d'insertion avec des requêtes préparées
-    $stmt = $conn->prepare("INSERT INTO student (nom, email, date_de_naissance) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $nom, $email, $date_de_naissance);
+    $studentID = uniqid();
+    $stmt = $conn->prepare("INSERT INTO student (id, nom, email, date_de_naissance) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $studentID, $nom, $email, $date_de_naissance);
 
     // Exécution de la requête préparée
     $stmt->execute();
@@ -40,6 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Fermeture de la connexion et du statement
     $stmt->close();
     $conn->close();
-} 
-header("Location: index.php");
-exit;
+
+    header("Location: index.php");
+    exit();
+}
+else{
+    
+}

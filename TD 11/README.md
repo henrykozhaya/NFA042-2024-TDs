@@ -5,7 +5,7 @@
 * Créer la table étudiant suivante:
 ```MySQL
 CREATE TABLE student (
-    id int AUTO_INCREMENT,
+    id varchar(255),
     nom varchar(255) not null,
     email varchar(255) not null,
     date_de_naissance date,
