@@ -23,7 +23,7 @@
     if(isset($_SESSION["user"])){
     ?>
     <div id="secureDiv">
-        aksdj fladsh flkajdshf lkajdshflkajdshflkajh sdkjlfhad fkajsdf
+        This is a secure section. Only logged in users should see it
     </div>
     <?php } ?>
 

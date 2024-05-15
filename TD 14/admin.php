@@ -10,5 +10,6 @@ if(!isset($_SESSION["user"])) header("location:login.php");
 </head>
 <body>
     <h3>This is an admin area</h3>
+    <div><a href='index.php'>Home</a></div>
 </body>
 </html>

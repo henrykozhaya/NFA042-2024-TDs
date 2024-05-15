@@ -47,8 +47,11 @@ function checkCookieToken(){
         $t_user = $_COOKIE["t_user"];
 
         $conn = db_connect();
-        $query = "SELECT id, username, name, email FROM users WHERE token = '$t_user'";
-        $result = $conn->query($query);
+        $query = "SELECT id, username, name, email FROM users WHERE token = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $t_user);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if($result->num_rows > 0){
             $row = mysqli_fetch_assoc($result);
             
@@ -58,7 +61,8 @@ function checkCookieToken(){
             $_SESSION["user"]["id"] = $row["id"];
             $_SESSION["user"]["name"] = $row["name"];
             $_SESSION["user"]["username"] = $row["username"];
-
+            $stmt->close();
+            $conn->close();
             header("location:index.php");
         }
     }

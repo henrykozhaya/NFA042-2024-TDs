@@ -42,8 +42,12 @@
             <?php
             // Récupération des données des étudiants
             $conn = db_connect();
-            $sql = "SELECT * FROM student";
-            $result = $conn->query($sql);
+            // Récupération des données des étudiants
+            $query = "SELECT * FROM student";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
                 // Affichage des données
@@ -60,6 +64,7 @@
             } else {
                 echo "<tr><td colspan='4'>Aucun étudiant trouvé</td></tr>";
             }
+            $stmt->close();
             $conn->close();
             ?>
         </tbody>

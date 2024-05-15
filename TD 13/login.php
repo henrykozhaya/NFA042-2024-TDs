@@ -22,23 +22,29 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
         // MD5: More secure than clear text, but again not the best 
         // $query = "SELECT id, username, name FROM users WHERE username = '$username' AND `password` = MD5('$password')";
         
-        $query = "SELECT id, username, name, password FROM users WHERE username = '$username'";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($result);
+        $query = "SELECT id, username, name, password FROM users WHERE username = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
-        if($result->num_rows > 0 && password_verify($password, $row["password"])){
+        $result = $stmt->get_result();
+        
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            if(password_verify($password, $row["password"])){
             // Authentication Succeeded 
             $_SESSION["user"]["id"] = $row["id"];
             $_SESSION["user"]["name"] = $row["name"];
             $_SESSION["user"]["username"] = $row["username"];
-            header("location:index.php");
-        }
-        else{
-            // Authentication Failed
-            // $error[] = "Invalid Credentials";
-            die("Invalid Credentials");
-        }
 
+            $stmt->close();
+            $conn->close();
+
+            header("location:index.php");
+            }
+
+        }
+        die("Invalid Credentials");
     }
 }
 else if($_SERVER["REQUEST_METHOD"] === 'GET'){
