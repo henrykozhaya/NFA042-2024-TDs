@@ -53,8 +53,8 @@
                     echo "<td>" . $row["nom"] . "</td>";
                     echo "<td>" . $row["email"] . "</td>";
                     echo "<td>" . $row["date_de_naissance"] . "</td>";
-                    echo "<td align='center'><a href='edit_etudiant.php?id=".$row["id"]."''><img width='16' src='img/edit.png'></td>";
-                    echo "<td align='center'><a href='delete_etudiant.php?id=".$row["id"]."'><img width='16' src='img/delete.png'></td>";
+                    echo "<td align='center'><a href='edit_etudiant.php?id=".$row["id"]."''><img width='16' src='img/edit.png'></a></td>";
+                    echo "<td align='center'><a href='delete_etudiant.php?id=".$row["id"]."'><img width='16' src='img/delete.png'></a></td>";
                     echo "</tr>";
                 }
             } else {

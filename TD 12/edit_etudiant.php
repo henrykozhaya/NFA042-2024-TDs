@@ -1,4 +1,5 @@
 <?php require_once 'functions.php'; ?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(
@@ -80,8 +81,8 @@ else if(($_SERVER["REQUEST_METHOD"] == "GET")){
                     <div><input type="text" name="email" id="" value="<?= $email ?>"></div>
                 </div>
                 <div style="margin-bottom:10px;">
-                    <div>Date de Naissance</div>
-                    <div><input type="date" name="date_de_naissance" id="" value="<?= $date_de_naissance ?>"></div>
+                        <div>Date de Naissance</div>
+                        <div><input type="date" name="date_de_naissance" id="" value="<?= $date_de_naissance ?>"></div>
                 </div>
                 <div>
                     <div><input type="submit" value="Mettre à jour"></div>

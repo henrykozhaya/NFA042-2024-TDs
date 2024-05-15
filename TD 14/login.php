@@ -31,6 +31,10 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
             $_SESSION["user"]["id"] = $row["id"];
             $_SESSION["user"]["name"] = $row["name"];
             $_SESSION["user"]["username"] = $row["username"];
+
+            if(isset($_POST["rememberme"])) setCookieToken($row["username"]);
+            
+
             header("location:index.php");
         }
         else{
@@ -50,6 +54,7 @@ else if($_SERVER["REQUEST_METHOD"] === 'GET'){
         <input type="text" id="username" name="username" required><br><br>
         <label for="password">Mot de passe :</label><br>
         <input type="password" id="password" name="password" required><br><br>
+        Remember me <input type="checkbox" name="rememberme"><br><br>
         <input type="submit" name="login" value="Se connecter">
     </form>
 </body>
