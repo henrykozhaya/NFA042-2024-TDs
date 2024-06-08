@@ -6,7 +6,7 @@ Créer les tables suivantes :
 
 * matiere (<ins>id</ins>, description)
 * annee (<ins>annee</ins>)
-* note (<ins>id</ins>, note, annee, matiereID, eleveId)
+* note (<ins>id</ins>, note, annee, matiereID, eleveID)
 
 Ajouter toutes les requêtes que vous avez utilisées dans un fichier `requetes.sql`.
 
